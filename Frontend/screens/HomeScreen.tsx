@@ -32,7 +32,8 @@ const HomeScreen = () => {
   }, []);
 
   const renderTaskItem = ({ index, item }: { index: number, item: TaskItem }) => (
-    <TaskView index={index} taskItem={item} onTaskPress={(id) => {
+    <TaskView index={index} taskItem={item} 
+    onTaskPress={(id) => {
       const newTask = { ...taskItems.find(task => task.id === id) } as TaskItem;
       newTask.isCompleted = !newTask.isCompleted;
       setTaskItems(taskItems.map(task => task.id === id ? newTask : task));
@@ -71,6 +72,7 @@ const HomeScreen = () => {
   };
 
   const handleFABPress = () => {
+    setSelectedTaskId(null);
     handleTaskBottomSheetRef.current?.present();
   }
 
